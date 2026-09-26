@@ -36,5 +36,19 @@ class Student:
         percentage = (obtained / total_possible) * 100
         return round(percentage / 9.5, 2)
 
-    def add_subject(self, subject_name, score):
-        self.subjects.append(Subject(subject_name, score))
+
+    def display_info(self):
+        """Helper method to format and print individual student details."""
+        subjects_str = ", ".join([str(s) for s in self.subjects])
+        print(f"\n--- Student Profile ---")
+        print(f"Roll No : {self.rollno}")
+        print(f"Name    : {self.name}")
+        print(f"Subjects: {subjects_str}")
+        print(f"Total   : {self.total_marks()}")
+        print(f"CGPA    : {self.getcgpa()}")
+        print(f"Status  : {self.pass_fail()}")
+        print("-----------------------")
+
+    def __str__(self):
+        """Default string representation when doing print(student)"""
+        return f"Student({self.rollno} - {self.name} | CGPA: {self.getcgpa()})"

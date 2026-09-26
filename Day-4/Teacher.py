@@ -1,12 +1,11 @@
-from data import Student
-from data import Subject
+from data import Student, Subject
 
 
 class Teacher:
 
     def __init__(self):
         self.students = {
-            "101":Student("Arman", [
+            "101":Student("Arman", "101" [
                 Subject("Math", 88),
                 Subject("Stats", 68),
                 Subject("Python", 78)
@@ -23,13 +22,17 @@ class Teacher:
         self.students[rollno] = new_student
         print(f"Student {name} (Roll No: {rollno})  added successfully.")
 
-    
+   
 
     def get_student(self,rollno):
         if rollno in self.students:
-            print()
+            student = self.students[rollno]
+            student.display_info()
+
+            return student
         else:
             print(f"No student with this {rollno} Rollno Exists")
+            return None
 
 
     def remove_student(self, rollno):
